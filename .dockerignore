@@ -1,0 +1,12 @@
+.git
+.gitignore
+.idea
+*.iml
+*.iws
+*.ipr
+build/
+.gradle/
+out/
+.vscode/
+*.md
+
