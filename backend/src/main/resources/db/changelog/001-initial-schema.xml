@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="2026-04-03 Create restaurant table" author="Gregor Gritsenko">
+        <createTable tableName="restaurant_table">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="table_number" type="int">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="seat_count" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zone" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="features" type="text[]" defaultValue="{}"/>
+        </createTable>
+
+        <sql>
+            ALTER TABLE restaurant_table
+                ADD CONSTRAINT chk_zone CHECK (zone IN ('HALL', 'TERRACE', 'PRIVATE'));
+        </sql>
+    </changeSet>
+
+    <changeSet id="2026-04-03 Create reservation" author="Gregor Gritsenko">
+        <createTable tableName="reservation">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="table_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_reservation_table"
+                             references="restaurant_table(id)"/>
+            </column>
+            <column name="reservation_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_time" type="time">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_time" type="time">
+                <constraints nullable="false"/>
+            </column>
+            <column name="party_size" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_phone" type="varchar(50)"/>
+        </createTable>
+
+        <sql>
+            ALTER TABLE reservation
+                ADD CONSTRAINT chk_end_after_start CHECK (end_time > start_time);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
