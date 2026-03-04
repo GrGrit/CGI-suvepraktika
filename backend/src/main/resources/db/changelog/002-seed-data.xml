@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <!-- Generated this file with AI to quickly populate the database with sample data. It creates
+    15 tables(8 in hall, 4 in terrace and 3 private) and 20 reservations. -->
+    <changeSet id="2026-04-03 Seed tables" author="Gregor Gritsenko">
+
+        <!-- HALL -->
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="1"/>
+            <column name="seat_count" valueNumeric="2"/>
+            <column name="zone" value="HALL"/>
+        </insert>
+        <sql>UPDATE restaurant_table SET features = ARRAY['WINDOW'] WHERE table_number = 1;</sql>
+
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="2"/>
+            <column name="seat_count" valueNumeric="2"/>
+            <column name="zone" value="HALL"/>
+        </insert>
+        <sql>UPDATE restaurant_table SET features = ARRAY['WINDOW'] WHERE table_number = 2;</sql>
+
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="3"/>
+            <column name="seat_count" valueNumeric="4"/>
+            <column name="zone" value="HALL"/>
+        </insert>
+
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="4"/>
+            <column name="seat_count" valueNumeric="4"/>
+            <column name="zone" value="HALL"/>
+        </insert>
+        <sql>UPDATE restaurant_table SET features = ARRAY['QUIET_CORNER'] WHERE table_number = 4;</sql>
+
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="5"/>
+            <column name="seat_count" valueNumeric="6"/>
+            <column name="zone" value="HALL"/>
+        </insert>
+
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="6"/>
+            <column name="seat_count" valueNumeric="6"/>
+            <column name="zone" value="HALL"/>
+        </insert>
+        <sql>UPDATE restaurant_table SET features = ARRAY['NEAR_PLAYGROUND'] WHERE table_number = 6;</sql>
+
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="7"/>
+            <column name="seat_count" valueNumeric="8"/>
+            <column name="zone" value="HALL"/>
+        </insert>
+
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="8"/>
+            <column name="seat_count" valueNumeric="4"/>
+            <column name="zone" value="HALL"/>
+        </insert>
+        <sql>UPDATE restaurant_table SET features = ARRAY['WINDOW', 'QUIET_CORNER'] WHERE table_number = 8;</sql>
+
+        <!-- TERRACE -->
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="9"/>
+            <column name="seat_count" valueNumeric="2"/>
+            <column name="zone" value="TERRACE"/>
+        </insert>
+
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="10"/>
+            <column name="seat_count" valueNumeric="4"/>
+            <column name="zone" value="TERRACE"/>
+        </insert>
+
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="11"/>
+            <column name="seat_count" valueNumeric="4"/>
+            <column name="zone" value="TERRACE"/>
+        </insert>
+
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="12"/>
+            <column name="seat_count" valueNumeric="6"/>
+            <column name="zone" value="TERRACE"/>
+        </insert>
+
+        <!-- PRIVATE -->
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="13"/>
+            <column name="seat_count" valueNumeric="4"/>
+            <column name="zone" value="PRIVATE"/>
+        </insert>
+        <sql>UPDATE restaurant_table SET features = ARRAY['QUIET_CORNER'] WHERE table_number = 13;</sql>
+
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="14"/>
+            <column name="seat_count" valueNumeric="6"/>
+            <column name="zone" value="PRIVATE"/>
+        </insert>
+        <sql>UPDATE restaurant_table SET features = ARRAY['QUIET_CORNER'] WHERE table_number = 14;</sql>
+
+        <insert tableName="restaurant_table">
+            <column name="table_number" valueNumeric="15"/>
+            <column name="seat_count" valueNumeric="10"/>
+            <column name="zone" value="PRIVATE"/>
+        </insert>
+        <sql>UPDATE restaurant_table SET features = ARRAY['QUIET_CORNER'] WHERE table_number = 15;</sql>
+
+    </changeSet>
+
+    <changeSet id="2026-04-03 Table reservations" author="Gregor Gritsenko">
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="1"/>
+            <column name="reservation_date" valueDate="2026-03-05"/>
+            <column name="start_time" value="12:00"/>
+            <column name="end_time" value="13:30"/>
+            <column name="party_size" valueNumeric="2"/>
+            <column name="customer_name" value="Kaja Kallas"/>
+            <column name="customer_phone" value="+372 5123 4567"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="5"/>
+            <column name="reservation_date" valueDate="2026-03-05"/>
+            <column name="start_time" value="18:00"/>
+            <column name="end_time" value="20:00"/>
+            <column name="party_size" valueNumeric="5"/>
+            <column name="customer_name" value="Jaagup Kreem"/>
+            <column name="customer_phone" value="+372 5111 2233"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="13"/>
+            <column name="reservation_date" valueDate="2026-03-05"/>
+            <column name="start_time" value="19:00"/>
+            <column name="end_time" value="21:00"/>
+            <column name="party_size" valueNumeric="4"/>
+            <column name="customer_name" value="Liis Rebane"/>
+            <column name="customer_phone" value="+372 5234 5678"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="3"/>
+            <column name="reservation_date" valueDate="2026-03-06"/>
+            <column name="start_time" value="12:00"/>
+            <column name="end_time" value="13:00"/>
+            <column name="party_size" valueNumeric="3"/>
+            <column name="customer_name" value="Peeter Ilves"/>
+            <column name="customer_phone" value="+372 5222 3344"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="10"/>
+            <column name="reservation_date" valueDate="2026-03-06"/>
+            <column name="start_time" value="18:30"/>
+            <column name="end_time" value="20:30"/>
+            <column name="party_size" valueNumeric="4"/>
+            <column name="customer_name" value="Karl Erik Taukar"/>
+            <column name="customer_phone" value="+372 5333 4455"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="7"/>
+            <column name="reservation_date" valueDate="2026-03-07"/>
+            <column name="start_time" value="19:00"/>
+            <column name="end_time" value="21:30"/>
+            <column name="party_size" valueNumeric="7"/>
+            <column name="customer_name" value="Andres Kuusk"/>
+            <column name="customer_phone" value="+372 5456 7890"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="9"/>
+            <column name="reservation_date" valueDate="2026-03-07"/>
+            <column name="start_time" value="12:00"/>
+            <column name="end_time" value="13:30"/>
+            <column name="party_size" valueNumeric="2"/>
+            <column name="customer_name" value="Katrin Lill"/>
+            <column name="customer_phone" value="+372 5444 5566"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="15"/>
+            <column name="reservation_date" valueDate="2026-03-08"/>
+            <column name="start_time" value="18:00"/>
+            <column name="end_time" value="21:00"/>
+            <column name="party_size" valueNumeric="9"/>
+            <column name="customer_name" value="Toomas Sepp"/>
+            <column name="customer_phone" value="+372 5567 8901"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="2"/>
+            <column name="reservation_date" valueDate="2026-03-08"/>
+            <column name="start_time" value="13:00"/>
+            <column name="end_time" value="14:30"/>
+            <column name="party_size" valueNumeric="2"/>
+            <column name="customer_name" value="Mari Põld"/>
+            <column name="customer_phone" value="+372 5555 6677"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="4"/>
+            <column name="reservation_date" valueDate="2026-03-09"/>
+            <column name="start_time" value="12:00"/>
+            <column name="end_time" value="14:00"/>
+            <column name="party_size" valueNumeric="4"/>
+            <column name="customer_name" value="Raivo Hein"/>
+            <column name="customer_phone" value="+372 5678 9012"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="6"/>
+            <column name="reservation_date" valueDate="2026-03-09"/>
+            <column name="start_time" value="17:00"/>
+            <column name="end_time" value="19:00"/>
+            <column name="party_size" valueNumeric="5"/>
+            <column name="customer_name" value="Piret Aas"/>
+            <column name="customer_phone" value="+372 5666 7788"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="12"/>
+            <column name="reservation_date" valueDate="2026-03-09"/>
+            <column name="start_time" value="19:00"/>
+            <column name="end_time" value="21:00"/>
+            <column name="party_size" valueNumeric="6"/>
+            <column name="customer_name" value="Raivo Oja"/>
+            <column name="customer_phone" value="+372 5789 0123"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="8"/>
+            <column name="reservation_date" valueDate="2026-03-11"/>
+            <column name="start_time" value="18:00"/>
+            <column name="end_time" value="20:00"/>
+            <column name="party_size" valueNumeric="3"/>
+            <column name="customer_name" value="Siim Kallas"/>
+            <column name="customer_phone" value="+372 5777 8899"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="11"/>
+            <column name="reservation_date" valueDate="2026-03-12"/>
+            <column name="start_time" value="12:30"/>
+            <column name="end_time" value="14:00"/>
+            <column name="party_size" valueNumeric="4"/>
+            <column name="customer_name" value="Anneli Saar"/>
+            <column name="customer_phone" value="+372 5890 1234"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="14"/>
+            <column name="reservation_date" valueDate="2026-03-12"/>
+            <column name="start_time" value="19:00"/>
+            <column name="end_time" value="21:30"/>
+            <column name="party_size" valueNumeric="6"/>
+            <column name="customer_name" value="Enn Koppel"/>
+            <column name="customer_phone" value="+372 5888 9900"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="1"/>
+            <column name="reservation_date" valueDate="2026-03-14"/>
+            <column name="start_time" value="19:00"/>
+            <column name="end_time" value="21:00"/>
+            <column name="party_size" valueNumeric="2"/>
+            <column name="customer_name" value="Jüri Ratas"/>
+            <column name="customer_phone" value="+372 5901 2345"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="7"/>
+            <column name="reservation_date" valueDate="2026-03-14"/>
+            <column name="start_time" value="18:00"/>
+            <column name="end_time" value="20:30"/>
+            <column name="party_size" valueNumeric="8"/>
+            <column name="customer_name" value="Mihkel Raud"/>
+            <column name="customer_phone" value="+372 5999 0011"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="3"/>
+            <column name="reservation_date" valueDate="2026-03-16"/>
+            <column name="start_time" value="12:00"/>
+            <column name="end_time" value="13:30"/>
+            <column name="party_size" valueNumeric="4"/>
+            <column name="customer_name" value="Marika Lepp"/>
+            <column name="customer_phone" value="+372 5100 2233"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="5"/>
+            <column name="reservation_date" valueDate="2026-03-16"/>
+            <column name="start_time" value="19:00"/>
+            <column name="end_time" value="21:00"/>
+            <column name="party_size" valueNumeric="6"/>
+            <column name="customer_name" value="Tanel Tammet"/>
+            <column name="customer_phone" value="+372 5012 3456"/>
+        </insert>
+
+        <insert tableName="reservation">
+            <column name="table_id" valueNumeric="10"/>
+            <column name="reservation_date" valueDate="2026-03-18"/>
+            <column name="start_time" value="18:00"/>
+            <column name="end_time" value="20:00"/>
+            <column name="party_size" valueNumeric="3"/>
+            <column name="customer_name" value="Kalle Kantpüks"/>
+            <column name="customer_phone" value="+372 5200 3344"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>
