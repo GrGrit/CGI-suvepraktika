@@ -62,4 +62,26 @@
         </sql>
     </changeSet>
 
+    <changeSet id="2026-05-03 Features to join table" author="Gregor Gritsenko">
+        <createTable tableName="table_feature">
+            <column name="table_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_feature_table"
+                             references="restaurant_table(id)"/>
+            </column>
+            <column name="feature" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <sql>
+            INSERT INTO table_feature (table_id, feature)
+            SELECT id, unnest(features)
+            FROM restaurant_table
+            WHERE features IS NOT NULL AND array_length(features, 1) > 0;
+        </sql>
+
+        <dropColumn tableName="restaurant_table" columnName="features"/>
+    </changeSet>
+
 </databaseChangeLog>
