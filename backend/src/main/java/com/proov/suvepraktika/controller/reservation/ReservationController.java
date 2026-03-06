@@ -46,14 +46,12 @@ public class ReservationController {
     }
 
     @PostMapping("/available-tables")
-    public List<RestaurantTableDto> getAvailableTables(
-            @RequestBody ReservationSearchRequestDto request) {
+    public List<RestaurantTableDto> getAvailableTables(@RequestBody ReservationSearchRequestDto request) {
         return reservationService.getAvailableTables(request);
     }
 
     @PostMapping("/recommend-tables")
-    public List<RestaurantTableDto> recommendTables(
-            @RequestBody TableRecommendationRequestDto request,
+    public List<RestaurantTableDto> recommendTables(@RequestBody TableRecommendationRequestDto request,
             @RequestParam(value = "limit", defaultValue = "5") int limit) {
         return reservationService.recommendTables(request, limit);
     }
