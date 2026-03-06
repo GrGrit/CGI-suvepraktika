@@ -1,5 +1,6 @@
 package com.proov.suvepraktika.controller.reservation;
 
+import com.proov.suvepraktika.controller.restauranttable.RestaurantTableDto;
 import com.proov.suvepraktika.service.ReservationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -42,5 +43,18 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteReservation(@PathVariable Long id) {
         reservationService.deleteReservation(id);
+    }
+
+    @PostMapping("/available-tables")
+    public List<RestaurantTableDto> getAvailableTables(
+            @RequestBody ReservationSearchRequestDto request) {
+        return reservationService.getAvailableTables(request);
+    }
+
+    @PostMapping("/recommend-tables")
+    public List<RestaurantTableDto> recommendTables(
+            @RequestBody TableRecommendationRequestDto request,
+            @RequestParam(value = "limit", defaultValue = "5") int limit) {
+        return reservationService.recommendTables(request, limit);
     }
 }
