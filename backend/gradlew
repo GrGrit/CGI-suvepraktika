@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+# Minimal Gradle wrapper stub for Docker builds
+# Invokes the wrapper jar with the provided arguments
+
+BASEDIR="$(cd "$(dirname "$0")" && pwd)"
+exec java -jar "$BASEDIR/gradle/wrapper/gradle-wrapper.jar" "$@"

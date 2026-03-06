@@ -15,7 +15,9 @@ services:
       timeout: 5s
       retries: 10
   cgi:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: cgi
     restart: always
     depends_on:

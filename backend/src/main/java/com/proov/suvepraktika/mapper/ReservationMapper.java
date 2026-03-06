@@ -14,6 +14,5 @@ public interface ReservationMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "table", ignore = true)
-    @Mapping(target = "tableNumber", ignore = true)
     Reservation toEntity(ReservationDto dto);
 }

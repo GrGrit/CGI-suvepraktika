@@ -6,7 +6,3 @@ pluginManagement {
 }
 
 rootProject.name = 'CGI-Suvepraktika'
-
-include 'backend'
-
-
