@@ -15,53 +15,41 @@
             <column name="seat_count" valueNumeric="2"/>
             <column name="zone" value="HALL"/>
         </insert>
-        <sql>UPDATE restaurant_table SET features = ARRAY['WINDOW'] WHERE table_number = 1;</sql>
-
         <insert tableName="restaurant_table">
             <column name="table_number" valueNumeric="2"/>
             <column name="seat_count" valueNumeric="2"/>
             <column name="zone" value="HALL"/>
         </insert>
-        <sql>UPDATE restaurant_table SET features = ARRAY['WINDOW'] WHERE table_number = 2;</sql>
-
         <insert tableName="restaurant_table">
             <column name="table_number" valueNumeric="3"/>
             <column name="seat_count" valueNumeric="4"/>
             <column name="zone" value="HALL"/>
         </insert>
-
         <insert tableName="restaurant_table">
             <column name="table_number" valueNumeric="4"/>
             <column name="seat_count" valueNumeric="4"/>
             <column name="zone" value="HALL"/>
         </insert>
-        <sql>UPDATE restaurant_table SET features = ARRAY['QUIET_CORNER'] WHERE table_number = 4;</sql>
-
         <insert tableName="restaurant_table">
             <column name="table_number" valueNumeric="5"/>
             <column name="seat_count" valueNumeric="6"/>
             <column name="zone" value="HALL"/>
         </insert>
-
         <insert tableName="restaurant_table">
             <column name="table_number" valueNumeric="6"/>
             <column name="seat_count" valueNumeric="6"/>
             <column name="zone" value="HALL"/>
         </insert>
-        <sql>UPDATE restaurant_table SET features = ARRAY['NEAR_PLAYGROUND'] WHERE table_number = 6;</sql>
-
         <insert tableName="restaurant_table">
             <column name="table_number" valueNumeric="7"/>
             <column name="seat_count" valueNumeric="8"/>
             <column name="zone" value="HALL"/>
         </insert>
-
         <insert tableName="restaurant_table">
             <column name="table_number" valueNumeric="8"/>
             <column name="seat_count" valueNumeric="4"/>
             <column name="zone" value="HALL"/>
         </insert>
-        <sql>UPDATE restaurant_table SET features = ARRAY['WINDOW', 'QUIET_CORNER'] WHERE table_number = 8;</sql>
 
         <!-- TERRACE -->
         <insert tableName="restaurant_table">
@@ -69,19 +57,16 @@
             <column name="seat_count" valueNumeric="2"/>
             <column name="zone" value="TERRACE"/>
         </insert>
-
         <insert tableName="restaurant_table">
             <column name="table_number" valueNumeric="10"/>
             <column name="seat_count" valueNumeric="4"/>
             <column name="zone" value="TERRACE"/>
         </insert>
-
         <insert tableName="restaurant_table">
             <column name="table_number" valueNumeric="11"/>
             <column name="seat_count" valueNumeric="4"/>
             <column name="zone" value="TERRACE"/>
         </insert>
-
         <insert tableName="restaurant_table">
             <column name="table_number" valueNumeric="12"/>
             <column name="seat_count" valueNumeric="6"/>
@@ -94,21 +79,27 @@
             <column name="seat_count" valueNumeric="4"/>
             <column name="zone" value="PRIVATE"/>
         </insert>
-        <sql>UPDATE restaurant_table SET features = ARRAY['QUIET_CORNER'] WHERE table_number = 13;</sql>
-
         <insert tableName="restaurant_table">
             <column name="table_number" valueNumeric="14"/>
             <column name="seat_count" valueNumeric="6"/>
             <column name="zone" value="PRIVATE"/>
         </insert>
-        <sql>UPDATE restaurant_table SET features = ARRAY['QUIET_CORNER'] WHERE table_number = 14;</sql>
-
         <insert tableName="restaurant_table">
             <column name="table_number" valueNumeric="15"/>
             <column name="seat_count" valueNumeric="10"/>
             <column name="zone" value="PRIVATE"/>
         </insert>
-        <sql>UPDATE restaurant_table SET features = ARRAY['QUIET_CORNER'] WHERE table_number = 15;</sql>
+
+        <!-- Features via join table -->
+        <insert tableName="table_feature"><column name="table_id" valueNumeric="1"/><column name="feature" value="WINDOW"/></insert>
+        <insert tableName="table_feature"><column name="table_id" valueNumeric="2"/><column name="feature" value="WINDOW"/></insert>
+        <insert tableName="table_feature"><column name="table_id" valueNumeric="4"/><column name="feature" value="QUIET_CORNER"/></insert>
+        <insert tableName="table_feature"><column name="table_id" valueNumeric="6"/><column name="feature" value="NEAR_PLAYGROUND"/></insert>
+        <insert tableName="table_feature"><column name="table_id" valueNumeric="8"/><column name="feature" value="WINDOW"/></insert>
+        <insert tableName="table_feature"><column name="table_id" valueNumeric="8"/><column name="feature" value="QUIET_CORNER"/></insert>
+        <insert tableName="table_feature"><column name="table_id" valueNumeric="13"/><column name="feature" value="QUIET_CORNER"/></insert>
+        <insert tableName="table_feature"><column name="table_id" valueNumeric="14"/><column name="feature" value="QUIET_CORNER"/></insert>
+        <insert tableName="table_feature"><column name="table_id" valueNumeric="15"/><column name="feature" value="QUIET_CORNER"/></insert>
 
     </changeSet>
 
