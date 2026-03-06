@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <!-- AI generated -->
+    <!-- Indexes for reservation overlap queries -->
+    <changeSet id="05-03-2026 indexes-reservation-date-time" author="Gregor Gritsenko">
+        <createIndex indexName="idx_reservation_date_time" tableName="reservation">
+            <column name="reservation_date"/>
+            <column name="start_time"/>
+            <column name="end_time"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="05-03-2026 indexes-reservation-table-date-time" author="Gregor Gritsenko">
+        <createIndex indexName="idx_reservation_table_date_time" tableName="reservation">
+            <column name="table_id"/>
+            <column name="reservation_date"/>
+            <column name="start_time"/>
+            <column name="end_time"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Indexes for restaurant_table filters -->
+    <changeSet id="05-03-2026 indexes-table-zone-seat" author="Gregor Gritsenko">
+        <createIndex indexName="index_table_zone" tableName="restaurant_table">
+            <column name="zone"/>
+        </createIndex>
+        <createIndex indexName="index_table_seatcount" tableName="restaurant_table">
+            <column name="seat_count"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Indexes for table_feature join table -->
+    <changeSet id="05-03-2026 indexes-table-feature" author="Gregor Gritsenko">
+        <createIndex indexName="index_table_feature_table" tableName="table_feature">
+            <column name="table_id"/>
+        </createIndex>
+        <createIndex indexName="index_table_feature_feature" tableName="table_feature">
+            <column name="feature"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
