@@ -57,13 +57,7 @@ export default function FilterPanel({ onSearch, onRecommend, onReset, loading }:
   const handleSearch = () => onSearch(buildSearchReq());
 
   const handleRecommend = () => {
-    const availableReq: SearchRequest = {
-      reservationDate: date || undefined,
-      startTime: startTime || undefined,
-      endTime: endTime || undefined,
-      requiredFeatures: required.length ? required : undefined,
-    };
-    onRecommend(buildRecommendReq(), availableReq);
+    onRecommend(buildRecommendReq(), buildSearchReq());
   };
 
   const handleReset = () => {

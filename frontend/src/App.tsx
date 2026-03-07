@@ -58,7 +58,11 @@ export default function App() {
         else map.set(t.id, 'occupied');
       });
       setStatuses(map);
-      setMessage({ text: `Soovitatud ${recommended.length} lauda (kollane)`, type: 'info' });
+      if (recommended.length === 0) {
+        setMessage({ text: 'Hetkel paremaid valikuid pole', type: 'info' });
+      } else {
+        setMessage({ text: `Soovitatud ${recommended.length} lauda (kollane)`, type: 'info' });
+      }
     } catch (err) {
       setMessage({ text: err instanceof Error ? err.message : 'Viga soovituste paringus', type: 'error' });
     } finally {
@@ -80,8 +84,8 @@ export default function App() {
   const handleBook = async (reservation: Parameters<typeof createReservation>[0]) => {
     await createReservation(reservation);
     setSelectedTable(null);
+    handleReset();
     setMessage({ text: 'Broneering edukalt loodud!', type: 'success' });
-    await handleReset();
   };
 
   return (

@@ -113,7 +113,7 @@ public class ReservationService {
         }
 
         int partySize = request.getPartySize();
-        int maxSeats = request.getAllowOversize() != null && request.getAllowOversize() ? Integer.MAX_VALUE : Math.max(partySize, partySize * 2);
+        int maxSeats = request.getAllowOversize() != null && request.getAllowOversize() ? Integer.MAX_VALUE : (int) Math.ceil(partySize * 1.5);
 
         // buffers
         LocalTime startWith = request.getStartTime().minusMinutes(Optional.ofNullable(request.getBufferMinutesBefore()).orElse(0));
