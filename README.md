@@ -7,6 +7,7 @@ Veebipõhine rakendus restorani laudade haldamiseks ja broneerimiseks. Kasutaja 
 | Osa | Tehnoloogia |
 |---|---|
 | Backend | Java 25, Spring Boot 3, Spring Data JPA |
+| Build | Gradle |
 | Andmebaas | PostgreSQL 14, Liquibase (migratsioonid) |
 | Frontend | React 19, TypeScript, Vite |
 | Konteinerid | Docker, Docker Compose |
